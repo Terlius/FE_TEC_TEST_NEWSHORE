@@ -1,0 +1,8 @@
+<p>flight-test works!</p>
+<div *ngFor="let flight of flights">
+    <p>Departure Station: {{ flight.origin }}</p>
+    <p>Arrival Station: {{ flight.destination }}</p>
+    <p>Número vuelo{{flight.transport.flightNumber}}</p>
+    <!-- Otros campos de vuelo que quieras mostrar -->
+  </div>
+  
