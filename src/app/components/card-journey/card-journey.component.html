@@ -1,0 +1,25 @@
+<div class="card shadow rounded ">
+  <div class="card-header text-center">Viaje {{numJourney}} </div>
+  <div class="card-body">
+    <h6 class="card-title font-weight-bold">
+      Origen: <span class="title-bold">{{journey.origin}}</span> Destino:
+      <span class="title-bold">{{journey.destination}}</span>
+    </h6>
+    <p class="font-weight-bold title-bold price">Precio: {{journey.price | number:'1.2-2'}} <span>{{journey.currency}}</span></p>
+    <p class="card-text">Los vuelos que debes tomar son:</p>
+    <div class="content-flights">
+      <ul class="list-group list-group-flush shadow ">
+        <li class="list-group-item bg-dark text-white rounded" *ngFor="let flight of journey.flights">
+            <div class="card-flight-title"> Origen: {{flight.origin}} - Destino: {{flight.destination}}</div>
+            <div class="card-flight-content">
+              <div>Nombre aerolínea: {{flight.transport?.flightCarrier}}</div>
+              <div>Número del vuelo: {{flight.transport?.flightNumber}}</div>
+              <div>Precio:  {{ flight.price | number:'1.2-2' }} {{flight.currency}}</div>
+            </div>
+          </li>
+          
+
+      </ul>
+    </div>
+  </div>
+</div>

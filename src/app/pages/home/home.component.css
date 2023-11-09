@@ -1,0 +1,29 @@
+.container{
+   width: 80%;
+   margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    padding: 40px;
+    font-style: oblique;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    min-height: 70vh;
+}
+
+.title{
+    text-align: center;
+    font-weight: 700;
+}
+
+.containerLogo .logo{
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+.mainText{
+    
+    font-weight: bolder;
+    font-weight: 700;
+    margin-top: 20px;
+}
