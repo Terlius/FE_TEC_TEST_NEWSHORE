@@ -11,34 +11,34 @@ export class Journey {
   }
 
   /**
-   * Updates the price of the journey based on the price of the flights
+   * Updates the price of the journey based on the priceCurrency of the flights
    * 
    * @returns void
    */
 
   public updatePrice(): void {
     let price = 0;
-    for (const flight of this.flights!) {
-      price += flight.price!;
+    for (const flight of this.flights) {
+      price += flight.priceCurrency;
     }
     this.price = price;
   }
 
   /**
    * Sets the currency of the journey to USD, COP, or EUR
-   * @param tipo 1 for USD, 2 for COP, 3 for EUR
+   * @param type 1 for USD, 2 for COP, 3 for EUR
    * @returns void
    */
-  setCurrency(tipo: number) {
+  setCurrency(type: number) {
    
     for (const flight of this.flights!) {
-      if (tipo === 1) {
+      if (type === 1) {
         flight.setCurrency('USD');
         this.currency = 'USD';
-      } else if (tipo === 2) {
+      } else if (type === 2) {
         flight.setCurrency('COP');
         this.currency = 'COP';
-      } else if (tipo === 3) {
+      } else if (type === 3) {
         flight.setCurrency('EUR');
         this.currency = 'EUR';
       }
