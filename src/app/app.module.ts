@@ -25,6 +25,8 @@ import { NumberOnlyDirective } from './directives/number-only.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +44,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   
   ],
+  
  
   providers: [],
   bootstrap: [AppComponent]

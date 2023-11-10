@@ -1,6 +1,26 @@
 # TecTestNewshore
+Prueba técnica para la empresa FLYR realizada por Miguel Mateo Grajales Sánchez.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+## Consideraciones
+Para la prueba técnica, utilicé la API https://recruiting-api.newshore.es/api/flights/1 - Rutas múltiples. También se podrían utilizar cualquiera de las otras dos APIs sin problema.
+
+## Uso
+Se ingresa en el campo origen uno de los códigos permitidos por la API (3 caracteres) y también en destino. Se elige un número máximo de escalas permitidas para el viaje y se selecciona la moneda en la que se desea ver el precio de los viajes.
+
+La moneda de los viajes generados se puede cambiar en cualquier momento a elección del usuario.
+
+Los campos tienen varias validaciones para evitar cualquier error en la aplicación:
+     Solo se permiten 3 caracteres
+     No puede ser igual el origen y el destino
+     No se pueden ingresar letras al campo de max escalas
+     No pueden estar los campos vacíos
+
+La página informa con un alert cualquier error anterior y también se genera una alerta si no se encuentran viajes para ese origen y destino.
+
+## Instalación 
+1. Clona el repositorio: `git clone https://github.com/Terlius/TEC_TEST_NEWSHORE.git`
+2. Ingresa al directorio: `cd TEC_TEST_NEWSHORE`
+3. Instala las dependencias: `npm install` 
 
 ## Development server
 
