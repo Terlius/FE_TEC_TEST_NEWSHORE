@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, max } from 'rxjs';
 import { Journey } from 'src/app/models/journey.model';
 import { JourneyService } from 'src/app/services/journey.service';
 
@@ -67,7 +66,7 @@ export class CreateRouteComponent {
     const inputOrigin = this.form.value.origin.trim();
     const inputDestination = this.form.value.destination.trim();
     if (!this.form.value.maxStops) {
-      this.message = "El número máximo de vuelos debe ser mayor a 0";    
+      this.message = "El número máximo de vuelos debe ser mayor a 0";
     } else if (!inputOrigin || !inputDestination) {
       this.message = "Los campos son obligatorios";
     } else if (inputOrigin.toUpperCase() === inputDestination.toUpperCase()) {
