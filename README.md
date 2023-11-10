@@ -2,7 +2,7 @@
 Prueba técnica para la empresa FLYR realizada por Miguel Mateo Grajales Sánchez.
 
 ## Consideraciones
-Para la prueba técnica, utilicé la API https://recruiting-api.newshore.es/api/flights/1 - Rutas múltiples. También se podrían utilizar cualquiera de las otras dos APIs sin problema.
+Para la prueba técnica, utilicé la API https://recruiting-api.newshore.es/api/flights/1 - Rutas múltiples. También se podrían utilizar cualquiera de las otras dos APIs sin problema en el archivo environment.ts.
 
 ## Uso
 Se ingresa en el campo origen uno de los códigos permitidos por la API (3 caracteres) y también en destino. Se elige un número máximo de escalas permitidas para el viaje y se selecciona la moneda en la que se desea ver el precio de los viajes.
