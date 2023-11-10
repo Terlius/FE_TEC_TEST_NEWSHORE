@@ -18,6 +18,7 @@ Los campos tienen varias validaciones para evitar cualquier error en la aplicaci
 La página informa con un alert cualquier error anterior y también se genera una alerta si no se encuentran viajes para ese origen y destino.
 
 ## Instalación 
+Debe tener instalado el CLI de Angular antes de la instalación: `npm install -g @angular/cli`
 1. Clona el repositorio: `git clone https://github.com/Terlius/TEC_TEST_NEWSHORE.git`
 2. Ingresa al directorio: `cd TEC_TEST_NEWSHORE`
 3. Instala las dependencias: `npm install` 
