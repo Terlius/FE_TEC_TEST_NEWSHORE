@@ -38,8 +38,6 @@ export class CreateRouteComponent {
 
     if (!this.validateErrors()) {
 
-      this.form.value.maxStops ? this.message = '' : this.message = "El número máximo de vuelos debe ser mayor a 0";
-
       if (this.form.valid) {
         this.loading = true;
 
@@ -68,8 +66,9 @@ export class CreateRouteComponent {
 
     const inputOrigin = this.form.value.origin.trim();
     const inputDestination = this.form.value.destination.trim();
-
-    if (!inputOrigin || !inputDestination) {
+    if (!this.form.value.maxStops) {
+      this.message = "El número máximo de vuelos debe ser mayor a 0";    
+    } else if (!inputOrigin || !inputDestination) {
       this.message = "Los campos son obligatorios";
     } else if (inputOrigin.toUpperCase() === inputDestination.toUpperCase()) {
       this.message = "El origen y el destino no pueden ser iguales";
