@@ -1,4 +1,4 @@
-<div>
+<div class="">
   <form [formGroup]="form" class="row" action="">
     <div class="col-lg-3 col-md-12">
       <div class="form-floating mb-3">
@@ -14,7 +14,7 @@
         <label for="floatingInput">Origen</label>
       </div>
     </div>
-    <div class="col-lg-2 col-md-12">
+    <div class="col-lg-3 col-md-12">
       <div class="form-floating mb-3">
         <input
           type="text"
@@ -28,7 +28,7 @@
         <label for="floatingInput">Destino</label>
       </div>
     </div>
-    <div class="col-lg-2 col-md-12">
+    <div class="col-lg-2 col-md-4">
       <div class="form-floating mb-3">
         <input
           type="number"
@@ -40,49 +40,76 @@
           formControlName="maxStops"
           appNumberOnly
         />
-        <label class="form-label" for="typeNumber">Número max rutas</label>
+        <label class="form-label" for="typeNumber">Max escalas</label>
       </div>
     </div>
 
-    <div class="col-lg-2 col-md-12 pb-3">
-      <select class="form-select h-100" aria-label="Default select example" (change)="onCurrencyChangeCurrency($event)" formControlName="currency">
+    <div class="col-lg-2 col-md-4 pb-3">
+      <select
+        class="form-select h-100"
+        aria-label="Default select example"
+        (change)="onCurrencyChangeCurrency($event)"
+        formControlName="currency"
+      >
         <option selected value="1">USD</option>
         <option value="2">COP</option>
         <option value="3">EUR</option>
       </select>
     </div>
 
-    <div class="col-lg-3 col-md-12 p-2">
+    <div class="col-lg-2 col-md-4 p-2">
       <button (click)="getJourneys()" type="button" class="btn btn-dark w-100">
         Crear ruta
       </button>
     </div>
   </form>
 
-  
   <div class="" *ngIf="message.length > 0">
     <div class="alert alert-danger" role="alert">
       {{ message }}
     </div>
   </div>
+  <div class="loading-spinner" *ngIf="loading">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100"
+      height="100"
+      viewBox="0 0 100 100"
+    >
+      <circle
+        cx="50"
+        cy="50"
+        r="40"
+        stroke="#000000"
+        stroke-width="10"
+        fill="none"
+      />
+      <circle
+        cx="50"
+        cy="50"
+        r="40"
+        stroke="#F0F0F0"
+        stroke-width="10"
+        fill="none"
+      >
+        <animate
+          attributeName="stroke-dasharray"
+          dur="2s"
+          values="0 251.2;251.2 0;0 251.2"
+          repeatCount="indefinite"
+        />
+      </circle>
+    </svg>
+  </div>
 
- 
   <div
-    class="wait-icon bg-dark text-white rounded"
-    *ngIf="journeys.length == 0"
+    class="wait-icon bg-dark text-white rounded mt-4"
+    *ngIf="journeys.length == 0 && !loading"
   >
     <i class="bi bi-airplane"></i> Esperando tus elecciones
   </div>
 
-
-  <div class="loading-spinner" *ngIf="loading">
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="40" stroke="#007BFF" stroke-width="10" fill="none" />
-      <circle cx="50" cy="50" r="40" stroke="#F0F0F0" stroke-width="10" fill="none">
-        <animate attributeName="stroke-dasharray" dur="2s" values="0 251.2;251.2 0;0 251.2" repeatCount="indefinite" />
-      </circle>
-    </svg>
-  </div>
+ 
   <div class="cards">
     <app-card-journey
       *ngFor="let item of journeys; let i = index"

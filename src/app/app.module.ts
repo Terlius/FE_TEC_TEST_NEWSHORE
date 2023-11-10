@@ -9,27 +9,25 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 //Components
-import { FlightTestComponent } from './components/flight-test/flight-test.component';
+import { CardJourneyComponent } from './components/card-journey/card-journey.component';
+
+//Animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Pages
 import { HomeComponent } from './pages/home/home.component';
-import { NumberOnlyDirective } from './directives/number-only.directive';
 import { CreateRouteComponent } from './pages/create-route/create-route.component';
 
-import { CardJourneyComponent } from './components/card-journey/card-journey.component';
+//Directives
+import { NumberOnlyDirective } from './directives/number-only.directive';
+
 //Forms
 import { ReactiveFormsModule } from '@angular/forms';
-
-
-
-
-
-
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FlightTestComponent,
     HomeComponent,
     NumberOnlyDirective,
     CreateRouteComponent,

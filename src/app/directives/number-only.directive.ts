@@ -1,16 +1,23 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
+/**
+ * Number only directive
+ * don't allow any character except number
+ * 
+ */
 @Directive({
   selector: '[appNumberOnly]'
 })
 export class NumberOnlyDirective {
   constructor(private el: ElementRef) {}
-  @HostListener('input', ['$event']) onInput(event: Event): void {
-    const inputElement = this.el.nativeElement as HTMLInputElement;
-    const value = inputElement.value;
+  @HostListener('keypress', ['$event'])
+  onKeyPress(event: KeyboardEvent) {
+    const allowedChars = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
 
-    // Limpia el valor para que solo contenga números
-    inputElement.value = value.replace(/[^0-9]/g, '');
+    if (!allowedChars.test(inputChar)) {
+      event.preventDefault();
+    }
   }
 
 }

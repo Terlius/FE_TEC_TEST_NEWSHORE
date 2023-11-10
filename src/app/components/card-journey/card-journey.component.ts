@@ -6,13 +6,9 @@ import { Journey } from 'src/app/models/journey.model';
   templateUrl: './card-journey.component.html',
   styleUrls: ['./card-journey.component.css']
 })
-export class CardJourneyComponent implements OnInit {
+export class CardJourneyComponent  {
 
 @Input() journey!: Journey;
 @Input() numJourney!: number;
-
-ngOnInit(): void {
-  }
-
 
 }

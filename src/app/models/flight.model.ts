@@ -1,54 +1,31 @@
 
+import { CurrencyConverterService } from '../services/currency-converter.service';
 import { Transport } from './transport.model';
 
 export class Flight {
+    private readonly COP_TO_USD = 3800;
+    private readonly EUR_TO_USD = 0.93;
+    private readonly COP_TO_EUR = 4380;
+
     transport?: Transport;
-    price?: number;
-    origin?: string;
-    destination?: string;
-    currency?: string = 'USD';
+    price: number = 0;
+    origin: string = 'N/A';
+    destination: string = 'N/A';
+    currency: string = 'USD';
 
-    constructor(transport?: Transport, price?: number, origin?: string, destination?: string) {
-        this.transport = transport;
-        this.price = price;
-        this.origin = origin;
-        this.destination = destination;
-       
+    constructor(
+        private _currencyConverterService: CurrencyConverterService
+    ) {
     }
 
-    setCurrencyUSD() {
-        if (this.currency === 'USD') {
-            return;
-        } else if (this.currency === 'COP') {
-            this.price = this.price! / 3800;
-            
-        } else {
-            this.price = this.price! * 0.93; // Usar punto en lugar de coma
-        }
-        this.currency = 'USD';
-    }
-    
-    setCurrencyCOP() { // Cambié el nombre del método a setCurrenctCOP a setCurrenctCOP
-        if (this.currency === 'COP') {
-            return;
-        } else if (this.currency === 'USD') {
-            this.price = this.price! * 3800;
-        } else {
-            this.price = this.price! * 4.380; // Usar punto en lugar de coma
-        }
-        this.currency = 'COP';
-    }
-    
-    setCurrencyEUR() {
-      
+    /**
+     * Sets the currency of the flight to USD
+     * 
+     * @returns void
+     */
+    setCurrency(currency: string) {
+        this.price = this._currencyConverterService.currencyConverter(this.price!, this.currency!, currency);
+        this.currency = currency;
         
-        if (this.currency === 'EUR') {
-            return;
-        } else if (this.currency === 'COP') {
-            this.price = this.price! / 4380;
-        } else {
-            this.price = this.price! / 0.93; // Usar punto en lugar de coma
-        }
-        this.currency = 'EUR';
     }
-  }
+}
