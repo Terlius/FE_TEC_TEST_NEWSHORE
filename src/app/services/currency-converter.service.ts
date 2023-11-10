@@ -14,7 +14,7 @@ export class CurrencyConverterService {
   constructor() { }
 
   /**
-   * function to convert currency from COP, USD and EUR
+   * function to convert price from one currency to another
    * @param price, price to convert
    * @param currency, currency of the price
    * @param newCurrency, new currency to convert
