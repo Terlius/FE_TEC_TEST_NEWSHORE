@@ -10,10 +10,10 @@ Se ingresa en el campo origen uno de los códigos permitidos por la API (3 carac
 La moneda de los viajes generados se puede cambiar en cualquier momento a elección del usuario.
 
 Los campos tienen varias validaciones para evitar cualquier error en la aplicación:
-     Solo se permiten 3 caracteres
-     No puede ser igual el origen y el destino
-     No se pueden ingresar letras al campo de max escalas
-     No pueden estar los campos vacíos
+     *Solo se permiten 3 caracteres*
+     *No puede ser igual el origen y el destino*
+     *No se pueden ingresar letras al campo de max de vuelos*
+     *No pueden estar los campos vacíos*
 
 La página informa con un alert cualquier error anterior y también se genera una alerta si no se encuentran viajes para ese origen y destino.
 
