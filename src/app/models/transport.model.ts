@@ -1,4 +1,5 @@
-export class Transport {
+export interface Transport {
     flightCarrier?: string;
     flightNumber?: string;
+
   }

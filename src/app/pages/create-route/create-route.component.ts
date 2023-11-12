@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Journey } from 'src/app/models/journey.model';
-import { JourneyService } from 'src/app/services/journey.service';
+import { ApiDataService } from 'src/app/services/api-data.service';
 
 @Component({
   selector: 'app-create-route',
@@ -16,13 +16,13 @@ export class CreateRouteComponent {
   loading: boolean = false;
 
   constructor(
-    private _journeyService: JourneyService
+    private _journeyService: ApiDataService
   ) {
     this.form = new FormGroup({
       origin: new FormControl('', [Validators.required, Validators.maxLength(3), Validators.minLength(3)]),
       destination: new FormControl('', [Validators.required, Validators.maxLength(3), Validators.minLength(3)]),
       maxStops: new FormControl(1, [Validators.required, Validators.pattern('[1-9][0-9]*'), Validators.minLength(1)]),
-      currency: new FormControl(1, [Validators.required])
+      currency: new FormControl('USD', [Validators.required])
 
     });
 
@@ -38,18 +38,17 @@ export class CreateRouteComponent {
     if (!this.validateErrors()) {
 
       if (this.form.valid) {
+        this.journeys = [];
         this.loading = true;
 
-        this._journeyService.findRoutesWithStops(this.form.value.origin.toUpperCase(), this.form.value.destination.toUpperCase(), this.form.value.maxStops)
+
+        this._journeyService.getJourneys(this.form.value.origin.toUpperCase(), this.form.value.destination.toUpperCase(), this.form.value.maxStops, this.form.value.currency)
           .subscribe((journeys: Journey[]) => {
             this.message = '';
-
-            if (journeys.length == 0) {
-              this.message = "No se encontraron rutas";
-            }
-            this.setCurrency(Number(this.form.value.currency), journeys);
-            journeys.sort((a, b) => a.price - b.price);
+            journeys.length == 0 ? this.message = "No se encontraron rutas" : this.message = '';
+            journeys.sort((a, b) => a.price! - b.price!);
             this.journeys = journeys;
+            console.log(journeys);
             this.loading = false;
           });
       }
@@ -57,10 +56,11 @@ export class CreateRouteComponent {
   }
 
   /**
-   * validate form fields
-   * @returns boolean, true if there are errors, false if there are not
+   * Validate the form fields
+   * @returns true if there is an error, false if there is not
    * 
-  */
+   */
+
   validateErrors(): boolean {
 
     const inputOrigin = this.form.value.origin.trim();
@@ -82,31 +82,5 @@ export class CreateRouteComponent {
     return true;
   }
 
-  /**
-   * set currency to journeys array according to the selected value in the form
-   * @param event event from the select in the form
-   * @returns void
-   * 
-  */
-  onCurrencyChangeCurrency(event: any) {
-    if (this.journeys.length != 0) {
-      const selectedValue = event.target.value;
-      this.setCurrency(selectedValue, this.journeys);
-    }
-  }
-
-  /**
-   * set currency to journeys array according to the selected value in the form
-   * @param type type of currency
-   * @returns void
-   * 
-  */
-
-  setCurrency(type: number, journeys: Journey[]) {
-    type = Number(type);
-    journeys.forEach((journey: Journey) => {
-      journey.setCurrency(type);
-    });
-  }
 
 }

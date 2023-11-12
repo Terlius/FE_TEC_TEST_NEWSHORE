@@ -1,6 +1,6 @@
 
 export const environment = {
     
-    API_URL: 'https://recruiting-api.newshore.es/api/flights/1',
+    API_URL: 'https://localhost:7249',
       
   };
