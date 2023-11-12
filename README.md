@@ -7,7 +7,7 @@ Para la prueba técnica, en el archivo environment.ts esta la url de la web API.
 ## Uso
 Se ingresa en el campo origen uno de los códigos permitidos por la API (3 caracteres) y también en destino. Se elige un número máximo de vuelos permitidos para el viaje y se selecciona la moneda en la que se desea ver el precio de los viajes.
 
-La moneda de los viajes generados se puede cambiar en cualquier momento a elección del usuario.
+Si se desea cambiar solo la moneda de los viajes mostrados debe volver a presionar el boton de crear rutas.
 
 Los campos tienen varias validaciones para evitar cualquier error en la aplicación:
      *Solo se permiten 3 caracteres*
